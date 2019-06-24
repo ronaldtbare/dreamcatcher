@@ -1,6 +1,5 @@
 const express = require("express");
 const path = require("path");
-const BodyParser = require("body-parser");
 const Mongoose = require("mongoose");
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -13,29 +12,27 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-Mongoose.connect("mongodb://localhost/booksearch");
+Mongoose.connect("mongodb://localhost/dreamjournal");
 
-const BookModel = Mongoose.model("book", {
-  title: String,
-  subtitle: String,
-  authors: String,
-  cover: String,
+const DreamModel = Mongoose.model("dream", {
+  subject: String,
+  date: Date,
   description: String,
-  previewLink: String
+  
 });
 
 // API routes
 
-app.get("/bookList", async (request, response) => {
+app.get("/dreamList", async (request, response) => {
   try {
-    var bookList = await BookModel.find().exec();
+    var dreamList = await DreamModel.find().exec();
     response.send(bookList);
   } catch (error) {
     response.status(500).send(error);
   }
 });
 
-app.post("/savebook", async (request, response) => {
+app.post("/saveDream", async (request, response) => {
   try {
     var revbook = request.body;
     revbook.authors = revbook.authors.join(" and ");
@@ -47,10 +44,10 @@ app.post("/savebook", async (request, response) => {
   }
 });
 
-app.delete("/deletebook/:bookID", async (request, response) => {
+app.delete("/deleteDream/:dreamID", async (request, response) => {
   try {
-    var deleteBook = await BookModel.deleteOne({ _id: request.params.bookID }).exec();
-    response.send(deleteBook);
+    var deleteDream = await DremModel.deleteOne({ _id: request.params.dreamID }).exec();
+    response.send(deleteDream);
   } catch (error) {
     response.status(500).send(error);
   }

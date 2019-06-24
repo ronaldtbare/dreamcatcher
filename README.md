@@ -1,10 +1,14 @@
-# Create React Express App
+# DreamJournal
 
-## About This Boilerplate
+by Travis Bare
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## About 
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+DreamJournal is a MERN app that allows the user to record their dream activity. Dreams can be queried by subject or date.
+
+##Technology
+HTML, CSS, Bootstrap, JavaScript, MongoDB, Express, React, Node
+Live demo: heroku
 
 ## Starting the app locally
 
@@ -24,6 +28,4 @@ npm start
 
 Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
 
-## Deployment (Heroku)
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
