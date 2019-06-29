@@ -2,23 +2,34 @@ import React from "react";
 import "../App.css";
 
 class Search extends React.Component {
-    state = { selectedOption: '', searchTerm: ''};
+    state = { selectedOption: '', searchSubject: '', searchDate: ''};
 
-    onChangeHandler = e => {
+    onChangeHandlerS = e => {
         e.preventDefault();
-        this.setState({ searchTerm: e.target.value });
+        this.setState({ searchSubject: e.target.value });
     }
+
+    onChangeHandlerD = e => {
+        e.preventDefault();
+        this.setState({ searchDate: e.target.value });
+    }
+
+
 
     submitHandler = e => {
         e.preventDefault();
-        this.props.history.push(`/search/${this.state.searchTerm}`);
+        const searchParameter = (this.state.selectedOption==="subject") ? this.state.searchSubject : this.state.searchDate ;   
+        console.log(searchParameter);
+        console.log(this.state.selectedOption)
     }
 
     showHide(showthis)  {
-        console.log(showthis);
-        this.setState({selectedOption: showthis })
-
-}
+        console.log("this happened", showthis);
+        this.setState({
+            selectedOption: showthis,
+        })
+        console.log("state: ", this.state)
+    }
 
     render() {
         const dateClass = this.state.selectedOption === "date" ? "" : "hide";
@@ -41,13 +52,13 @@ class Search extends React.Component {
                                 </label>
                         </div>
                         <div className={subjectClass}>    
-                            <input type="text" onChange={this.onChangeHandler} value={this.state.searchTerm} className="form-control" id="search" aria-describedby="searchHelp" placeholder="Enter a subject term."/>
+                            <input type="text" onChange={this.onChangeHandlerS} value={this.state.searchTerm} className="form-control" id="search" aria-describedby="searchHelp" placeholder="Enter a subject term."/>
                         </div>
                     </div>
 
                     <div className={dateClass}>
                         <label for="searchdate">Enter search date:</label>
-                        <input type="date" id="searchdate" name="searchdate"/>
+                        <input type="date" onChange={this.onChangeHandlerD} id="searchdate" name="searchdate"/>
                     </div>
                         <br></br>
                     <button onClick={this.submitHandler} type="submit" className="btn btn-primary">Search</button>
