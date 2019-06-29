@@ -1,10 +1,10 @@
-# DreamJournal
+# DreamCatcher
 
 by Travis Bare
 
 ## About 
 
-DreamJournal is a MERN app that allows the user to record their dream activity. Dreams can be queried by subject or date.
+DreamCatcher is a MERN app that allows the user to record their dream activity. Dreams can be queried by subject or date.
 
 ##Technology
 HTML, CSS, Bootstrap, JavaScript, MongoDB, Express, React, Node

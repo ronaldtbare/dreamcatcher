@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const Mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -12,13 +13,15 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-Mongoose.connect("mongodb://localhost/dreamjournal");
+Mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/dreamcatcher", {
+  useNewUrlParser: true
+});
 
 const DreamModel = Mongoose.model("dream", {
   subject: String,
   date: Date,
-  description: String,
-  
+  hoursSlept: Number,
+  description: String, 
 });
 
 // API routes
@@ -34,10 +37,9 @@ app.get("/dreamList", async (request, response) => {
 
 app.post("/saveDream", async (request, response) => {
   try {
-    var revbook = request.body;
-    revbook.authors = revbook.authors.join(" and ");
-    var book = new BookModel(revbook);
-    var result = await book.save();
+    var saveDream = request.body;
+    var dream = new DreamModel(saveDream);
+    var result = await dream.save();
     response.send(result);
   } catch (error) {
     response.status(500).send(error);
@@ -58,6 +60,12 @@ app.delete("/deleteDream/:dreamID", async (request, response) => {
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
+
+if (process.env.NODE_ENV === "production"){
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

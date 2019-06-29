@@ -1,12 +1,10 @@
 body{
-  background-color: rgb(253, 126, 75);
+  background-color: rgb(143, 173, 71);
 }
 
 .App {
   text-align: center;
 }
-
-
 
 .App-header {
   background-color: #222;
@@ -30,14 +28,26 @@ body{
   border-style: solid;
   border-width: 4px;
   padding:30px;
-  background-color:rgb(153, 247, 250);;
+  background-color:rgb(171, 186, 255);;
+  margin: auto;
+  width: 50%;
+  
+}
+
+.save{
+  border: black;
+  border-radius: 20px;
+  border-style: solid;
+  border-width: 4px;
+  padding:30px;
+  background-color:rgb(171, 186, 255);;
   margin: auto;
   width: 50%;
   
 }
 
 .bgimage{
-  background-image: url("./images/booksdark.jpg");
+  background-image: url("./images/dreamcatcher1.jpg");
 
 }
 
@@ -57,7 +67,11 @@ body{
   
 }
 
-.savedbook{
+.hide{
+  display: none;
+}
+
+.saveddream{
   border: black;
   border-radius: 10px;
   border-style: solid;

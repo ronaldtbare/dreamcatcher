@@ -6,8 +6,8 @@ import "../App.css";
 
         return (
             <div className="jumbotron bgimage">
-                <h1 className="display-4 color-white">(React) Google Books Search</h1>
-                <p className="lead color-white">Search for and Save Books of Interest.</p>
+                <h1 className="display-4 color-white">Dream Catcher</h1>
+                <h3 className="lead color-white">Catch Your Dreams ...</h3>
                 <hr className="my-4" />
             </div>
         );
