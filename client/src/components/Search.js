@@ -52,7 +52,7 @@ class Search extends React.Component {
                                 </label>
                         </div>
                         <div className={subjectClass}>    
-                            <input type="text" onChange={this.onChangeHandlerS} value={this.state.searchTerm} className="form-control" id="search" aria-describedby="searchHelp" placeholder="Enter a subject term."/>
+                            <input type="text" onChange={this.onChangeHandlerS} value={this.state.searchSubject} className="form-control" id="search" aria-describedby="searchHelp" placeholder="Enter a subject term."/>
                         </div>
                     </div>
 
