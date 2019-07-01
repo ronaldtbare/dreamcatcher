@@ -8,7 +8,7 @@ import Save from "./components/Save.js";
 import Jumbotron from "./components/Jumbotron.js";
 import Nav from "./components/Nav.js";
 
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -18,12 +18,12 @@ class App extends Component {
           <Nav />
           <Jumbotron/>
           <hr />
-          <switch>
+          <Switch>
             <Route path="/" component={Search} exact/>
             <Route path="/search" component={Search} exact/>
             {/* <Route path="/search/:searchTerm" component={ResultsList} exact /> */}
             <Route path="/save" component={Save} />
-          </switch>
+          </Switch>
         </div>
       </BrowserRouter>
         

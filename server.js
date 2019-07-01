@@ -29,7 +29,7 @@ const DreamModel = Mongoose.model("dream", {
 app.get("/dreamList", async (request, response) => {
   try {
     var dreamList = await DreamModel.find().exec();
-    response.send(bookList);
+    response.send(dreamList);
   } catch (error) {
     response.status(500).send(error);
   }

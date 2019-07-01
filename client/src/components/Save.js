@@ -10,7 +10,7 @@ class Save extends React.Component {
     // handle any changes to the input fields
     handleInputChange = event => {
         // Pull the name and value properties off of the event.target (the element which triggered the event)
-        const { name, value } = event.target;
+        let { name, value } = event.target;
 
         // Set the state for the appropriate input field
         this.setState({
@@ -21,7 +21,12 @@ class Save extends React.Component {
     submitHandler = e => {
         e.preventDefault();
         console.log("here is the state: " , this.state);
-        API.saveDream(this.state)
+        API.saveDream(this.state);
+        let { name, value } = "";
+        this.setState({
+            [name]: value
+        });
+        
     }
 
 render(){
