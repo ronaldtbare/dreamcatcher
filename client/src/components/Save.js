@@ -22,10 +22,13 @@ class Save extends React.Component {
         e.preventDefault();
         console.log("here is the state: " , this.state);
         API.saveDream(this.state);
-        let { name, value } = "";
+        
         this.setState({
-            [name]: value
-        });
+            subject: '', 
+            date: '', 
+            hoursSlept: '', 
+            description: ''
+            });
         
     }
 

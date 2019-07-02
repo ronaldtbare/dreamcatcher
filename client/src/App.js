@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import "./App.css";
 import Search from "./components/Search.js";
-// import ResultsList from "./components/ResultsList.js";
+import DreamList from "./components/DreamList.js";
 import Save from "./components/Save.js";
 
 import Jumbotron from "./components/Jumbotron.js";
@@ -21,7 +21,7 @@ class App extends Component {
           <Switch>
             <Route path="/" component={Search} exact/>
             <Route path="/search" component={Search} exact/>
-            {/* <Route path="/search/:searchTerm" component={ResultsList} exact /> */}
+            <Route path="/search/:searchTerm" component={DreamList} exact />
             <Route path="/save" component={Save} />
           </Switch>
         </div>

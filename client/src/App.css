@@ -47,8 +47,8 @@ body{
 }
 
 .bgimage{
-  background-image: url("./images/dreamcatcher1.jpg");
-
+  background-image: url("./images/dreamcatcher2.png");
+  background-color: rgb(17, 34, 92)
 }
 
 .color-white{

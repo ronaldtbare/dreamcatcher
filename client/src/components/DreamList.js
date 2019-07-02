@@ -1,13 +1,13 @@
 import React from "react";
 import "../App.css";
-import ResultDream from "./ResultDream.js";
+import Dream from "./Dream.js";
 import { API } from "../utils/API.js";
 
-class ResultsList extends React.Component {
+class DreamList extends React.Component {
     state = { dreams: [] };
 
-    handleClick(subject, date, hours, description) {
-        console.log("TRYING TO SAVE Dream")
+    editDream(subject, date, hoursSlept, description) {
+       
         const dreamdata = {
             subject,
             date,
@@ -16,7 +16,7 @@ class ResultsList extends React.Component {
         }
         console.log("dreamdata is: ", dreamdata)
 
-        API.saveDream(dreamdata);
+        API.editDream(dreamdata);
         this.setState({dreams: this.state.dreams.filter(dream => dream.subject !== subject)})
     }
 
@@ -38,10 +38,10 @@ class ResultsList extends React.Component {
             <div className="results">
                
                results
-               {ResultDream}
+               {Dream}
             </div>
         )
     }
 }
 
-export default ResultsList;
+export default DreamList;
