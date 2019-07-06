@@ -26,9 +26,10 @@ const DreamModel = Mongoose.model("dream", {
 
 // API routes
 
-app.get("/dreamList", async (request, response) => {
+app.get("/dreamList/:dreamParameter", async (request, response) => {
   try {
-    var dreamList = await DreamModel.find().exec();
+    // var dreamList = await DreamModel.find({"subject": dreamParameter}) || ({date: dreamParameter}).exec();
+    var dreamList = await DreamModel.find({ subject: request.params.dreamParameter }).exec();
     response.send(dreamList);
   } catch (error) {
     response.status(500).send(error);
@@ -48,15 +49,13 @@ app.post("/saveDream", async (request, response) => {
 
 app.delete("/deleteDream/:dreamID", async (request, response) => {
   try {
-    var deleteDream = await DremModel.deleteOne({ _id: request.params.dreamID }).exec();
+    var deleteDream = await DreamModel.deleteOne({ _id: request.params.dreamID }).exec();
     response.send(deleteDream);
   } catch (error) {
     response.status(500).send(error);
   }
 });
 
-// Send every other request to the React app
-// Define any API routes before this runs
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });

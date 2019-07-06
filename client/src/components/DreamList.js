@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import Dream from "./Dream.js";
 import { API } from "../utils/API.js";
+import Search from "./Search.js"
 
 class DreamList extends React.Component {
     state = { dreams: [] };
@@ -20,12 +21,13 @@ class DreamList extends React.Component {
         this.setState({dreams: this.state.dreams.filter(dream => dream.subject !== subject)})
     }
 
-    fetchDreams() {
+    fetchDreams(searchParameter) {
         console.log("FETCHED dreams!!!!!!!!!")
-        fetch(`/dreamlist/${this.props.match.params.searchTerm}`)
+        API.getDreamList(`/dreamList/${searchParameter}`)
             .then(response => response.json())
-            .then(data => this.setState({ dreams: data.items }))
-            .then(data => console.log(data.items))
+            .then(data => this.setState({ dreams: data }))
+            .then(data => console.log(data))
+            .then(console.log(searchParameter))
             .catch(error => console.log);
     }
     
@@ -37,8 +39,18 @@ class DreamList extends React.Component {
         return (
             <div className="results">
                
-               results
-               {Dream}
+               results for ""
+              
+               {this.state.dreams.map(el => <Dream
+                    subject={el.subject}
+                    date={el.date}
+                    hoursSlept={el.hoursSlept}
+                    description={el.description}
+                    dreamID={el._id}
+                    deleteDream={(dreamID)=>this.deleteDream(dreamID)}
+                    editDream={(dreamID)=>this.editDream(dreamID)}
+                
+                />)}
             </div>
         )
     }

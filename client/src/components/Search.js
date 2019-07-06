@@ -1,8 +1,9 @@
 import React from "react";
 import "../App.css";
+import { API } from "../utils/API";
 
 class Search extends React.Component {
-    state = { selectedOption: '', searchSubject: '', searchDate: ''};
+    state = { selectedOption: '', searchSubject: '', searchDate: '',searchParameter:''};
 
     onChangeHandlerS = e => {
         e.preventDefault();
@@ -14,13 +15,13 @@ class Search extends React.Component {
         this.setState({ searchDate: e.target.value });
     }
 
-
-
     submitHandler = e => {
         e.preventDefault();
         const searchParameter = (this.state.selectedOption==="subject") ? this.state.searchSubject : this.state.searchDate ;   
-        console.log(searchParameter);
+        this.props.history.push(`/search/${this.state.searchParameter}`);
+        console.log("searchparameter is " + searchParameter);
         console.log(this.state.selectedOption)
+        API.getDreamList();    
     }
 
     showHide(showthis)  {

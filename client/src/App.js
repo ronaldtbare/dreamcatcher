@@ -21,7 +21,7 @@ class App extends Component {
           <Switch>
             <Route path="/" component={Search} exact/>
             <Route path="/search" component={Search} exact/>
-            <Route path="/search/:searchTerm" component={DreamList} exact />
+            <Route path="/dreamList/:searchParameter" component={DreamList} exact />
             <Route path="/save" component={Save} />
           </Switch>
         </div>

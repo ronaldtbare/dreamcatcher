@@ -15,9 +15,9 @@ export const API = {
     return axios.put("/editDream", dreamData);
   },
 
-  // grabs books from the database
-  getDreamList: function(){
-    return axios.get("/dreamList");
+  // grabs dreams from the database
+  getDreamList: function(searchParameter){
+    return axios.get(`/dreamList/${searchParameter}`);
   }
   
 };
